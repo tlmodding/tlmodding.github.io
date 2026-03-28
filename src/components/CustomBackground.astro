@@ -1,6 +1,17 @@
 <style>
+:root[data-theme=light] 
+{
+    --color-gradient: rgba(203, 211, 219, 0.8);
+}
+
+:root[data-theme=dark] 
+{
+    --color-gradient: rgba(17, 18, 19, 0.8);
+}
+
+
 body {
-    background: linear-gradient(rgba(17, 18, 19, 0.8), var(--sl-color-bg)), url(/tomodachi-bg.png) !important;
+    background: linear-gradient(var(--color-gradient), var(--sl-color-bg)), url(/tomodachi-bg.png) !important;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
 
