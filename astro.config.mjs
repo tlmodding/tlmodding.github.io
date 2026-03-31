@@ -25,6 +25,7 @@ export default defineConfig({
 			social: [
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/tlmodding/tlmodding.github.io' },
 				{ icon: 'discord', label: 'Discord', href: 'https://discord.gg/YHFNTvXrdE' },
+				{ icon: 'heart', label: 'GameBanana', href: 'https://gamebanana.com/games/23911' }
 			],
 			head: [
 				{
@@ -66,10 +67,6 @@ export default defineConfig({
 								autogenerate: { directory: "getting-started" }
 							},
 							{
-								label: 'Using Mods',
-								autogenerate: { directory: "using-mods" }
-							},
-							{
 								label: 'Creating Mods',
 								autogenerate: { directory: "creating-mods" }
 							},
@@ -82,6 +79,22 @@ export default defineConfig({
 								autogenerate: { directory: "guides" }
 							},
 						]
+					},
+					{
+						label: 'Living the Dream',
+						link: '/living-the-dream',
+						icon: 'star',
+						items: [{
+							label: 'Getting Started',
+							items:[{
+								label: 'Overview',
+								link: '/living-the-dream',
+							}]
+						},
+						{
+							label: 'Tools',
+							autogenerate: { directory: 'living-the-dream/tools' },
+						}]
 					},
 					{
 						label: 'Documentation',

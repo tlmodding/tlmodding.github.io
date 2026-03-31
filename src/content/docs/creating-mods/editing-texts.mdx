@@ -1,47 +1,80 @@
 ---
 title: Editing Texts
-description: "A guide on how to edit texts (such as UI, dialogues and more) on Tomodachi Life: Living the Dream"
+description: "A guide on how to edit texts (such as UI, dialogues and more) on Tomodachi Life games"
 sidebar:
   order: 3
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
 
-**MSBT (Message Binary Text)** files are used in **Tomodachi Life: Living the Dream** to store text data, such as interface, dialogue, items, and other in-game text.
+**MSBT (Message Binary Text)** files are used in all Tomodachi Life games to store text data, such as interface, dialogue, items, and other in-game text. 
 
-These files are stored inside a `.sarc.zs` file in the `romfs/Mals` folder and are named as `{language}.{type}.{version}.sarc.zs`, where:
-- `{language}` is the [Language Code](#language-codes)
-- `{type}` is either `Trial` (if is the **Demo** version) or `Production` (full game)
-- `{version}` is the game version (3rd line in `romfs/System/RegionLangMask.txt`) 
+In this guide you will learn how to install and setup **MSBT Editor** and how to use it to modify your files. This guide is available for multiple Tomodachi Life games, please select the desired game on each section!
 
-In this guide you will learn how to install and setup **MSBT Editor** and how to use it to modify MSBT files.
+<Tabs>
+  <TabItem label="Tomodachi Life: Living the Dream">
+  In **Tomodachi Life: Living the Dream**, these files are stored inside a `.sarc.zs` file in the `romfs/Mals` folder and are named as `{language}.{type}.{version}.sarc.zs`, where:
+  - `{language}` is the [Language Code](#language-codes)
+  - `{type}` is either `Trial` (if is the **Demo** version) or `Production` (full game)
+  - `{version}` is the game version (3rd line in `romfs/System/RegionLangMask.txt`) 
+  </TabItem>
+  <TabItem label="Tomodachi Life (3ds)">
+  In **Tomodachi Life (3ds)**, these files are store inside `.bin` files in the `romfs/message` folder, being organized in folders. There is only one language per ROM, so you'll only find the language for the ROM you dumped.
+  </TabItem>
+</Tabs>
 
 
 ## Installing MSBT Editor
-**[MSBT Editor](/tools/msbt-editor)** is the primary tool used to edit MSBT files.
+**[MSBT Editor](/tools/msbt-editor)** is the primary tool used to editing MSBT files. As it is the most feature-complete and user-friendly tool, also supports a ton of games. 
 
 <Steps>
-1. [Download the latest version of MSBT Editor](https://gitlab.com/AeonSake/msbt-editor/-/releases/permalink/latest) and [TomoLife_LtD.gcf](https://gitlab.com/AeonSake/msbt-editor/-/blob/master/configs/TomoLife_LtD.gcf). Both are updated frequently, so always check for updates!
+1. [Download the latest version of MSBT Editor](https://gitlab.com/AeonSake/msbt-editor/-/releases/permalink/latest) and your desired game configuration.
+
+    - Tomodachi Life Living the Dream: [TomoLife_LtD.gcf](https://gitlab.com/AeonSake/msbt-editor/-/raw/master/configs/TomoLife_LtD.gcf)
+    - Tomodachi Life (3ds): [TomoLife.gcf](https://gitlab.com/AeonSake/msbt-editor/-/raw/master/configs/TomoLife.gcf)
+    - Tomodachi Life (3ds) - Japanese version: [TomoLife_JP.gcf](https://gitlab.com/AeonSake/msbt-editor/-/raw/master/configs/TomoLife_JP.gcf)
+    <p>**To save a configuration, you just need to open the link and do Ctrl + S.**</p>
+
 2. Extract the zip file and open `MsbtEditor.exe`.
-3. In the **MSBT Editor**, locate and click on the `Data` drop-down menu (at the very top) and on `Change Game Config`.
-4. Click on `Import Config...` and select your `TomoLife_LtD.gcf` file.
-5. Select `Tomodachi Life: Living the Dream` in the list.
+3. Locate and click on the `Data` drop-down menu (at the very top) and on `Change Game Config`.
+4. Click on `Import Config...` and select your `.gcf` file (step 1).
+5. Select the desired game in the list.
 5. Your editor should be ready to use!
 </Steps>
 
 ## Editing
-To edit messages is **really** simple, all you will need to do is localize your [language](#language-codes) in the `romfs/Mals` folder and open in the editor, here is a step by step:
 
-<Steps>
-1. Open MSBT Editor
-2. Go to `File` > `Open File...` and select the desired language in your `rofms/Mals` folder
+<Tabs>
+  <TabItem label="Tomodachi Life: Living the Dream">
+    To edit messages is **really** simple, all you will need to do is localize your [language](#language-codes) in the `romfs/Mals` folder and open in the editor, here is a step by step:
+
+    <Steps>
+    1. Open MSBT Editor
+    2. Go to `File` > `Open File...` and select the desired language in your `rofms/Mals` folder
+        
+        *You can also open the Mals folder directly, if you plan to edit multiples languages at the same time.*
+    3. Expand the loaded file and find which **.MSBT** you want to edit
+    4. Do your edits and save the file with **Ctrl + S**
+    5. After finishing all yours edits, right click the *.sarc* file (the root file) and click on `Save`
+    6. You have successfully edited your texts!
+    </Steps>
+  </TabItem>
+  <TabItem label="Tomodachi Life (3ds)">
+    To edit messages is **really** simple, all you will need to do is open your `romfs/message` folder and open in the editor, here is a step by step:
+
+    <Steps>
+    1. Open MSBT Editor
     
-    *You can also open the Mals folder directly, if you plan to edit multiples languages at the same time.*
-3. Expand the loaded file and find which **.MSBT** you want to edit
-4. Do your edits and save the file with **Ctrl + S**
-5. After finishing all yours edits, right click the *.sarc* file (the root file) and click on `Save`
-6. You have successfully edited your texts!
-</Steps>
+    2. Go to `File` > `Open Folder...` and select your `rofms/message` folder
+    3. Look for for the files you want to edit in the loaded directories and files.
+    4. Do your edits and save the file with **Ctrl + S**
+    5. After finishing all yours edits, right click the `message` folder and click on `Save`
+    6. You have successfully edited your texts!
+    </Steps>
+  </TabItem>
+</Tabs>
+
+
 
 ## References
 
