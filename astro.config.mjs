@@ -89,6 +89,10 @@ export default defineConfig({
 							items:[{
 								label: 'Overview',
 								link: '/living-the-dream',
+							},
+							{
+								label: 'Spreadsheets',
+								link: '/living-the-dream/spreadsheets',
 							}]
 						},
 						{
