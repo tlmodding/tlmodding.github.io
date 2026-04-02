@@ -29,7 +29,7 @@ ReadSpeaker uses next-generation Deep Neural Network (DNN) technology to structu
 
 ## Voice Files
 
-The files can be found in the `VoiceText` folder of the romfs. And files are named after: `tts_single_db({Voice}).vtdb2` where Voice is the 'actor' name, which can be found on this list:
+The files can be found in the `VoiceText` folder of the romfs. And files are named after: `tts_single_db(D32-{Voice}).vtdb2` where Voice is the 'actor' name, which can be found on this list:
 
 | Region / Language | Voice |
 |---|---|
@@ -49,3 +49,44 @@ The files can be found in the `VoiceText` folder of the romfs. And files are nam
 | Korean | `HYERYUN` |
 | Traditional Chinese | `HONG` |
 | Simplified Chinese | `YAFANG` |
+
+## File Structure
+
+Despite the file name indicating a `32KHz` version of the TTS Model, seems the models are actually **D16** (`16KHz`) according to many paths in the file metadata.
+
+The original models were built on **Jul 26 2019** by ReadSpeaker, with the exception of **HONG** and **YAFANG** (both Chinese models) that were built on **Feb 17 2025** by Nintendo itself.
+
+| Offset | Size | Type | Description | 
+| ------ | ---- | ---- | ----------- | 
+| 0x0  | 4 | uint32 | [Record](#record) Count |
+| 0x4  | 4 | uint32 | String Size, the game expects it to be exactly 0x200 |
+| 0x8  | 4 | uint32 | Ceasar Shift |
+| 0xC  | 0x200 | string | Root record, the size come from the "String Size" |
+| 0x20C  | - | Record[recordCount] | Records |
+
+### Record
+
+Again, the `0x200` in both **Ceaser Strings** come from the String Size in header, which in Tomodachi Life: Living the Dream is expected to be exactly `0x200`.
+
+| Offset | Size | Type | Description | 
+| ------ | ---- | ---- | ----------- | 
+| 0x0  | 0x200 | Caesar String | Record Path |
+| 0x200  | 0x200 | Caesar String | Path |
+| 0x400  | 4 | uint32 | Offset |
+| 0x404  | 4 | uint32 | Size |
+
+### Record Validation
+
+The game engine locates records by using the file name on `Record Path`, searching for:
+
+- `db_build.date`
+- `%s/hashparams`
+- `%sl.pat`
+- `%sf.bin`
+- `%sg.bin`
+- `%sd.bin`
+- `%sp.bin`
+
+:::caution[Work in Progress]
+This page is work in progress and subject to change.
+:::
