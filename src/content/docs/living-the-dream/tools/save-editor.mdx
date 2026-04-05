@@ -12,17 +12,98 @@ The Save Editor is a tool that allows you to edit your save file for **Tomodachi
 
 ### Download
 
-The Save Editor can be found on [GitHub](https://github.com/tlmodding/living-the-dream-save-editor), and is only available for Windows, for now. But can be used on Linux and MacOS with **Wine**.
+The Save Editor can be found on [GitHub](https://github.com/tlmodding/living-the-dream-save-editor), it is available for Windows on both WinForms and Avalonia and for Mac and Linux with Avalonia.
 
-You have two options for downloading the Save Editor, a self-contained one which doesn't require .NET to be installed, but is a bit larger in size, and a regular one which requires .NET 10 to be installed, but is smaller in size.
+:::caution[Dependency]
+For non self-contained versions, you'll need to have [.NET 10 Runtime](https://dotnet.microsoft.com/download/dotnet/10.0) installed on your PC. It is available for Windows, Linux and Mac.
+:::
+
+### WinForms
+WinForms is a UI Framework that targets Windows, but can be used on Mac and Linux with **[Wine](https://www.winehq.org/)**
 
 <LinkCard
-  title="Latest (self-contained)"
+  title="Windows WinForms (self-contained)"
+  description="Self-contained apps don't require .NET 10 to be installed, but have a bigger download size."
+  target="_blank"
   href="https://github.com/tlmodding/living-the-dream-save-editor/releases/latest/download/LTDSaveEditor-Windows-selfcontained.zip"
 />
 
 <LinkCard
-  title="Latest (requires .NET)"
+  title="Windows WinForms"
+  target="_blank"
   href="https://github.com/tlmodding/living-the-dream-save-editor/releases/latest/download/LTDSaveEditor-Windows.zip"
 />
 
+### Avalonia
+Avalonia is a modern UI framework that can run nativelly on Windows, Linux and Mac. But it does requires **.NET 10 Runtime**.
+
+<LinkCard
+  title="Windows x64"
+  target="_blank"
+  href="https://github.com/tlmodding/living-the-dream-save-editor/releases/latest/download/LTDSaveEditor-Windows-x64.zip"
+/>
+
+<LinkCard
+  title="Linux x64"
+  target="_blank"
+  href="https://github.com/tlmodding/living-the-dream-save-editor/releases/latest/download/LTDSaveEditor-Linux-x64.zip"
+/>
+
+<LinkCard
+  title="MacOS x64"
+  target="_blank"
+  href="https://github.com/tlmodding/living-the-dream-save-editor/releases/latest/download/LTDSaveEditor-macOS-x64.zip"
+/>
+
+
+<LinkCard
+  title="MacOS arm64"
+  target="_blank"
+  href="https://github.com/tlmodding/living-the-dream-save-editor/releases/latest/download/LTDSaveEditor-macOS-arm64.zip"
+/>
+
+## How to use
+To start using the Save Editor is pretty simple, all you'll need is your `.sav` files that can be extracted using **JKSV Save Manager** on Switch or by right-clicking the game on a emulator and using "Open User Save Directory".
+
+In the case of an emulator, you can either copy these files to a folder of your preference or select the emulator folder directly, since Save Editor will backup your files automatically.
+
+This is what you'll see when you open the program:
+![Select a folder](../../../../assets/images/save-editor/select-a-folder.png)
+
+Simply drag and drop the folder directly into the editor or click the "Choose Folder" to select where your save files are.
+
+And if you selected the folder correctly, you should be able to see the next window.
+**NOTE:** The folder you select **must** contain all the required `.sav` files: `Player.sav`,`Mii.sav` and `Map.sav`
+
+![save-editor/select-a-entry](../../../../assets/images/save-editor/select-a-entry.png)
+
+Now all you need is to select which entry/flag you want to edit. Let's see some examples.
+
+## Examples
+This is where things starts to get interesting, but can be a little hard to find all the options you want, so let's address some of the most important ones.
+
+The examples in here will use dots to indicate a path, so to found the property just go on the tab (Player, Mii or Map) and start to un-collapse the dropdowns as the name suggests.
+
+### Player
+The `Player` tab stores all sort of information about the player itself, some of the most common flags are these:
+
+- `Player.Money` - Stores the information of how much money your player have.
+
+- `Trial.IsFinishedPR` (*demo only*) - Indicates if the player completed the demo.
+
+### Miis
+The `Mii` tab stores all sort of information of your Miis, these can be useful for you:
+
+First is important to know the **index** of the Mii you want to edit, to do this go on:
+
+`Mii.Name.Name` - The first column is the index and second column is the name of your Mii, remember the index for the Mii you want to edit.
+
+Now that you have the Mii index you can edit a lot of things like:
+
+- `Mii.CharacterParam` - This group stores the *Sociability*, *Audaciousness*, *Activeness*, *Commonsense* and *Gaiety* of each Mii.
+- `Mii.Feeling.Type` - Stores how the Mii is currently feeling.
+- `Mii.MiiMisc.EatInfo.EatFullness` - Indicates how full the Mii stomatch is, from 0 to 100.
+- `Mii.MiiMisc.EatInfo.UltraBestId` - The all-time favorite food of the Mii.
+- `Mii.MiiMisc.EatInfo.BestId` - The 2nd all-time favorite food of the Mii.
+- `Mii.MiiMisc.EatInfo.UltraWorstId` - The all-time hated food of the Mii.
+- `Mii.MiiMisc.EatInfo.WorstId` - The 2nd all-time hated food of the Mii.
