@@ -115,6 +115,10 @@ export default defineConfig({
 								label: 'Living the Dream',
 								autogenerate: { directory: 'documentation/living-the-dream' },
 						},
+						{
+								label: 'Tomodachi Life (3ds)',
+								autogenerate: { directory: 'documentation/tomodachi-life-3ds' },
+						},
 					 	{
 								label: 'File Formats',
 								autogenerate: { directory: 'documentation/file-formats' },

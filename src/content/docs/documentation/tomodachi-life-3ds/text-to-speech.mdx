@@ -1,0 +1,42 @@
+---
+title: Text to Speech Engine
+description: "The engine behind Tomodachi Life (3DS) TTS."
+sidebar:
+  order: 0
+---
+
+In **Tomodachi Life (3DS)**, the engine behind the famous “Hillary voice” is **Nuance Automotive TTS**, specifically an older generation that uses **16 kHz** voice models.
+
+It is the engine used in **Miitomo**, but even though both games share the same TTS engine, **Miitomo** uses newer models.
+On Miitomo the models being `cfg3` / `3f`, while **Tomodachi Life** its the older `cfg1` / `1f` models.
+
+The models can be found in the game's `romfs`, inside `romfs/libNTTS/`. The used `components`, `ruleset`, and `dict` resources are stored in their respective `.bin` files, which are packaged as **BARC** archives.
+
+## How it works
+
+Tomodachi Life does not simply store one prerecorded voice for each Mii. Instead, it generates speech at runtime using the TTS engine and a set of adjustable voice parameters: `pitch`, `speed`, `quality`, `tone`, `accent` and `intonation`.
+They also seem to prefer female models, probably because they work better with the voice parameters.
+
+This is why Miis can sound very different from each other even though they are all using the same TTS model.
+
+## Singing
+
+The TTS system is also tied to **singing**. Tomodachi Life does not use a completely separate engine for songs; instead, it appears to reuse the speech engine with extra data for timing, effects, and note control.
+
+:::caution[WIP]
+Singing still need some documentation, with all the 'effects' found on MSBT files.
+:::
+
+## Differences from Miitomo
+
+Although **Tomodachi Life** and **Miitomo** both use Nuance TTS, their resources are not exactly the same.
+
+- **Tomodachi Life**: older models, commonly described as `cfg1` / `1f`
+- **Miitomo**: newer models, commonly described as `cfg3` / `3f`
+- **Miitomo** also uses 22kHz models, while **Tomodachi Life** still using 16kHz sample rate.
+
+Because of this, voice models from one game may not be directly compatible with the other without additional conversion or patching.
+
+## Summary
+
+In short, **Tomodachi Life (3DS)** uses **Nuance Automotive TTS** to generate Mii speech in real time. The system relies on older **16 kHz** voice models and adjustable synthesis parameters such as pitch, speed, tone, accent, and intonation. It is closely related to the engine later used in **Miitomo**, but Miitomo uses newer voice models.

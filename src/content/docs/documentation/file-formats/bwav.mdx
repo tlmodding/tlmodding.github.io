@@ -19,20 +19,20 @@ sidebar:
 | 0x10   | [Channel](#channel) [channelCount] | Channels          |
 
 ### Channel
-| Offset | Type                                   | Description                                                                     |
-|--------|----------------------------------------|---------------------------------------------------------------------------------|
-| 0x0    | [SampleFormat](#sample-format) (u16)   | Sample Format                                                                   |
-| 0x2    | [OutputChannel](#output-channel) (u16) | Output Channel                                                                  |
-| 0x4    | u32                                    | Sample Rate                                                                     |
-| 0x8    | u32                                    | Total Sample Count                                                              |
-| 0xC    | u32                                    | **Local** Sample Count                                                          |
-| 0x10   | Parameter                              | AdpcmParameter if Adpcm<br/>OpusParameter if Opus<br/>padding[0x20] if PcmInt16 |
-| 0x30   | u32                                    | Total Samples Offset                                                            |
-| 0x34   | u32                                    | Local Samples Offset                                                            |
-| 0x38   | u16                                    | Loop Count                                                                      |
-| 0x3A   | u16                                    | Base Loop Index                                                                 |
-| 0x3C   | s32                                    | Loop End                                                                        |
-| 0x40   | [LoopInfo](#loop-info) [loopCount]     | Loops                                                                           |
+| Offset | Type                                   | Description                                                                                                            |
+|--------|----------------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| 0x0    | [SampleFormat](#sample-format) (u16)   | Sample Format                                                                                                          |
+| 0x2    | [OutputChannel](#output-channel) (u16) | Output Channel                                                                                                         |
+| 0x4    | u32                                    | Sample Rate                                                                                                            |
+| 0x8    | u32                                    | Total Sample Count                                                                                                     |
+| 0xC    | u32                                    | **Local** Sample Count                                                                                                 |
+| 0x10   | Parameter                              | AdpcmParameter if SampleFormat.Adpcm<br/>OpusParameter if SampleFormat.Opus<br/>padding[0x20] if SampleFormat.PcmInt16 |
+| 0x30   | u32                                    | Total Samples Offset                                                                                                   |
+| 0x34   | u32                                    | Local Samples Offset                                                                                                   |
+| 0x38   | u16                                    | Loop Count                                                                                                             |
+| 0x3A   | u16                                    | Base Loop Index                                                                                                        |
+| 0x3C   | s32                                    | Loop End                                                                                                               |
+| 0x40   | [LoopInfo](#loop-info) [loopCount]     | Loops                                                                                                                  |
 
 #### Sample Format
 ```c
@@ -56,6 +56,7 @@ enum OutputChannel
     RightSurround = 5,
 };
 ```
+
 
 #### Loop Info
 | Offset | Type        | Description       |
