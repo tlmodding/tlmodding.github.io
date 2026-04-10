@@ -1,0 +1,67 @@
+---
+title: Binary Waveform (BWAV)
+sidebar:
+  order: 1
+---
+
+**B**inary **Wav**eform (BWAV) contains the audio and channel data.
+
+## Header
+
+| Offset | Type                               | Description       |
+|--------|------------------------------------|-------------------|
+| 0x0    | Magic                              | `BWAV`            |
+| 0x4    | u16                                | BOM               |
+| 0x6    | u16                                | Version           |
+| 0x8    | u32                                | Data Hash (CRC32) |
+| 0xC    | u16                                | Is Prefetched     |
+| 0xE    | u16                                | Channel Count     |
+| 0x10   | [Channel](#channel) [channelCount] | Channels          |
+
+### Channel
+| Offset | Type                                   | Description                                                                                                            |
+|--------|----------------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| 0x0    | [SampleFormat](#sample-format) (u16)   | Sample Format                                                                                                          |
+| 0x2    | [OutputChannel](#output-channel) (u16) | Output Channel                                                                                                         |
+| 0x4    | u32                                    | Sample Rate                                                                                                            |
+| 0x8    | u32                                    | Total Sample Count                                                                                                     |
+| 0xC    | u32                                    | **Local** Sample Count                                                                                                 |
+| 0x10   | Parameter                              | AdpcmParameter if SampleFormat.Adpcm<br/>OpusParameter if SampleFormat.Opus<br/>padding[0x20] if SampleFormat.PcmInt16 |
+| 0x30   | u32                                    | Total Samples Offset                                                                                                   |
+| 0x34   | u32                                    | Local Samples Offset                                                                                                   |
+| 0x38   | u16                                    | Loop Count                                                                                                             |
+| 0x3A   | u16                                    | Base Loop Index                                                                                                        |
+| 0x3C   | s32                                    | Loop End                                                                                                               |
+| 0x40   | [LoopInfo](#loop-info) [loopCount]     | Loops                                                                                                                  |
+
+#### Sample Format
+```c
+enum SampleFormat
+{
+    PcmInt16 = 0,
+    Adpcm = 1,
+    Opus = 2
+};
+```
+
+#### Output Channel
+```c
+enum OutputChannel 
+{
+    Left = 0,
+    Right = 1,
+    Center = 2,
+    LowFrequencyEffect = 3,
+    LeftSurround = 4,
+    RightSurround = 5,
+};
+```
+
+
+#### Loop Info
+| Offset | Type        | Description       |
+|--------|-------------|-------------------|
+| 0x0    | u32         | Start             |
+| 0x4    | s16         | Predictor Scale   |
+| 0x6    | s16 [2]     | History           |
+| 0xA    | padding [2] | Padding/Alignment |

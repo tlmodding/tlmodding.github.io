@@ -1,0 +1,30 @@
+---
+title: Binary Audio Resources (BARS)
+sidebar:
+  order: 0
+---
+
+BARS (**B**inary **A**udio **R**esource**s**) is a file that stores Audio Assets (`BWAV` and `AMTA`) in modern Nintendo games.
+
+
+## Header
+
+| Offset | Type                                         | Description                                                   |
+|--------|----------------------------------------------|---------------------------------------------------------------|
+| 0x0    | MAGIC                                        | File Magic (`BARS`)                                           |
+| 0x4    | u32                                          | File Size                                                     |
+| 0x8    | u16                                          | BOM                                                           |
+| 0xA    | u8                                           | Version Major                                                 |
+| 0xB    | u8                                           | Version Minor                                                 |
+| 0xC    | u32                                          | Asset Count                                                   |
+| 0xF    | u32 [assetCount]                             | Asset Hashes                                                  |
+| -      | [AudioOffsets](#audio-offsets) [assetCount]  | Asset Offsets                                                 |
+| -      | u32                                          | External Prefetch Count (only present in version >= **2.1**)  |
+| -      | u32 [externalPrefetchCount]                   | External Prefetch Hashes (only present in version >= **2.1**) |
+
+### Audio Offsets
+
+| Offset | Type | Description                |
+|--------|------|----------------------------|
+| 0x0    | u32  | Offset to [AMTA](/documentation/file-formats/audio/amta) |
+| 0x4    | u32  | Offset to [BWAV](/documentation/file-formats/audio/bwav) |
