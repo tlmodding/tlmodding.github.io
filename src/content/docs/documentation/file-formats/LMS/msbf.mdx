@@ -49,18 +49,19 @@ Actions defined within the [FLW3](#flw3) section are done via nodes.
 
 #### Parameter Types
 
-Parameter types dictate how parameter values may be passed into the node if it takes arguments. There may be more than
-one value passed into a node.
+Parameter types dictate how parameter values may be passed into the node if it takes arguments.
 
-| Value | Description                                                                                              |
-| ----- | -------------------------------------------------------------------------------------------------------- |
-| 0x0   | Int32 value                                                                                              |
-| 0x1   | Pair of Int16 values                                                                                     |
-| 0x2   | Int16 value + pair of Int8 values                                                                        |
-| 0x3   | Pair of Int8 + Int16 value                                                                               |
-| 0x4   | Int8 Array                                                                                               |
-| 0x5   | String value. Stored as an offset from start of block to the string in the [string table](#string-table) |
-| 0x6   | Int32 value                                                                                              |
+The parameter stream always takes up 4 bytes. Not all values may utilized.
+
+| Value | Type         | Description                                                            |
+| ----- | ------------ | ---------------------------------------------------------------------- |
+| 0x0   | s32          | Signed 32 bit integer                                                  |
+| 0x1   | [s16, s16]   | Signed 16 bit integers.                                                |
+| 0x2   | s16 + s8 [2] | Signed 16 bit integer + Signed 8 bit pair                              |
+| 0x3   | s8 [2] + s16 | Signed 8 bit pair + Signed 16 bit integer                              |
+| 0x4   | s8 [4]       | Signed 8 bit integer array                                             |
+| 0x5   | string       | String value. Stored as a u32 pointer to [string table](#string-table) |
+| 0x6   | s32          | Signed 32 bit integer                                                  |
 
 ### Message Node
 
