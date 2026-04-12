@@ -12,11 +12,10 @@ Tomodachi Life utilizes the [MSBF](/documentation/file-formats/lms/msbf) file fo
 and their [attributes](/documentation/file-formats/lms/msbt/#atr1) so several properties of scenes can be modified.
 
 ### Loading of Scenes 
-In the case of folders like `Drama`, all events must contain the three following files (example event name):
+In the case of folders like `Drama`, all events must contain the three following files (using example event `ToolBath`):
 
 ```
-romfs/message/Drama
-  Drama_Tool:
+romfs/message/Drama/Drama_Tool:
     >> ToolBath.msbf
     >> ToolBath.msbt 
     >> ToolBath_Build.msbt
@@ -137,6 +136,7 @@ Message Nodes always take in two parameters:
 | `PlaySE`              | 96         | `name`       | 5              | Plays a sound effect from the loaded group                                                       |
 
 #### Variables & Storage
+
 In event flows, the game can create and store values in variables created utilizing nodes. Variables always start with the `$` prefix.
 
 Values can be reassigned, modified and or evaluated to alter the flow of the event. This very common across all event flows present in the game.
