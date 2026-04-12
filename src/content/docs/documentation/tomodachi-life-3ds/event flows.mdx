@@ -1,0 +1,144 @@
+---
+title: Event Flows
+description: "The specifics behind how event flows work in Tomodachi Life (3DS)."
+sidebar:
+  order: 1
+---
+
+In **Tomodachi Life (3DS)**, a core component of the games engine revolves around event flows. Event flows create cutscenes by describing actions preformed on objects and or Miis in a
+flowchart style format. 
+
+Tomodachi Life utilizes the [MSBF](/documentation/file-formats/lms/msbf) file format to make this work. MSBF is closely linked with [MSBT](/documentation/file-formats/lms/msbf) files
+and their [attributes](/documentation/file-formats/lms/msbt/#atr1) so several properties of scenes can be modified.
+
+### Loading of Scenes 
+In the case of folders like `Drama`, all events must contain the three following files (example event name):
+
+```
+romfs/message/Drama
+  Drama_Tool:
+    >> ToolBath.msbf
+    >> ToolBath.msbt 
+    >> ToolBath_Build.msbt
+```
+`ToolBath.msbf` is a [MSBF](/documentation/file-formats/lms/msbf) file that stores the event flow. 
+
+`ToolBath.msbt` is a [MSBT](/documentation/file-formats/lms/msbt) file that stores normal message text data for referencing.
+
+`ToolBath_Build.msbt` is a [MSBT](/documentation/file-formats/lms/msbt) files store which relevant scene data as [Attributes](/documentation/file-formats/lms/msbt/#atr1). Each label in the file follows the bottom list of attributes, however not all attribute fields are necessary.
+
+| Name                      | Datatype | Description                                                                                                                  |
+| ------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `Folder`                  | LIST     | The name of the folder the event is located in.                                                                              |
+| `RequestedScene`          | LIST     | The requested scene folder.                                                                                                  |
+| `bl_Label`                | string   | Label for how the item should be referenced. May be utilized in [MSBF](/documentation/file-formats/lms/msbf) node parameters |
+| `bl_BinaryPass`           | string   | Absolute path to the file reference                                                                                          |
+| `bl_FileLabel`            | string   | Label of item in the loaded file                                                                                             |
+| `bl_DataName`             | string   | -                                                                                                                            |
+| `bl_SceneLabel`           | string   | -                                                                                                                            |
+| `bl_Screen`               | LIST     | To load the scene on the upper or lower 3DS screen.                                                                          |
+| `bl_LightSet`             | string   | -                                                                                                                            |
+| `bl_SRTBone`              | string   | -                                                                                                                            |
+| `bl_Pos`                  | string   | -                                                                                                                            |
+| `bl_Anim`                 | string   | Animation name (if applicable)                                                                                               |
+| `bl_ExpFlag`              | string   | Experience flag (Examples: `1,9`, `1,9,0,8`)                                                                                 |
+| `bl_Body`                 | string   | -                                                                                                                            |
+| `bl_Headwear`             | string   | -                                                                                                                            |
+| `bl_RoomId`               | s8       | -                                                                                                                            |
+| `bl_ItemList`             | string   | -                                                                                                                            |
+| `bl_LightParentCamera`    | string   | -                                                                                                                            |
+| `bl_AnimController`       | u8       | -                                                                                                                            |
+| `bl_MiiResolution`        | LIST     | Sets the resolution of Mii faces in the scene.                                                                               |
+| `bl_MiiNoMaskWhenHolding` | bool     | -                                                                                                                            |
+| `bl_ItemEffect`           | LIST     | Determines if items have effects in the scene.                                                                               |
+
+#### LIST values
+
+`Folder`
+
+- Confession
+- Drama
+- Dream
+- External
+- SnapShot
+- StaffRoll
+- Tool
+- WandererWatch
+
+`RequestedScene`
+
+- Drama
+- Dream
+- Tool
+- Propose
+- WandererWatch
+- Snapshot
+- StaffRoll
+- Ar
+- Etc
+
+`bl_Screen`
+
+- Upper
+- Lower
+- None
+
+`bl_MiiResolution`
+
+- `CFL_RESOLUTION_64`
+- `CFL_RESOLUTION_128`
+- `CFL_RESOLUTION_256`
+- `CFL_RESOLUTION_64M`
+- `CFL_RESOLUTION_128M`
+- `CFL_RESOLUTION_256M`
+
+`bl_ItemEffect`
+
+- EffectOff
+- EffectOn
+  
+## Nodes 
+
+Following describes and document node types and their identifers to build a comprehensive view on actions. 
+
+### Message Nodes
+[Message Nodes](/documentation/file-formats/lms/msbf/message-nodes) reference a message in a [MSBT](/documentation/file-formats/lms/msbt) file. These may be used for when Miis talk, buttons are prompted or a caption is shown on screen.
+
+Message Nodes always take in two parameters:
+
+* `FileIndex`: Refers to the index of the the [MSBT](/documentation/file-formats/lms/msbt) file in an archive. 
+* `MessageIndex` refers to the index of the message in that file.
+
+
+### Branch Nodes 
+
+[Branch Nodes](/documentation/file-formats/lms/msbf/message-nodes) alter the flow of the event depending on a specific condition.
+| Name                | Identifier | Parameters   | Parameter type | Node Description                                                         |
+| ------------------- | ---------- | ------------ | -------------- | ------------------------------------------------------------------------ |
+| `EvalulateVariable` | 0          | `expression` | 5              | Acts like a normal boolean check. 0 = False, 1 = True. Example: `$s < 3` |
+| `SwitchVariable`    | 1          | `var`        | 5              | Acts like a switch statement. Matches against the value of the variable  |
+| `EvaluateMiiGender` | 15         | `mii`        | 5              | Evalutes the gender of a Mii. 0 = Male 1 = Female                        |
+
+
+### Event Nodes 
+
+[Event Nodes](/documentation/file-formats/lms/msbf/message-nodes) preform a wide range of actions on objects, the game state or Miis.
+
+
+| Name                  | Identifier | Parameters   | Parameter type | Node Description                                                                                 |
+| --------------------- | ---------- | ------------ | -------------- | ------------------------------------------------------------------------------------------------ |
+| `SetVariableValue`    | 3          | `expression` | 5              | Sets the value of a variable in a string expresion (i.e. `$s = 5`)                               |
+| `SelectMii`           | 39         | `mii`        | 5              | Selects a Mii for use in the scene                                                               |
+| `SetMiiPos`           | 41         | `mii`        | 5              | Sets the position of a Mii in the scene. Utilizes nodes from the `bcres` scene loaded            |
+| `PlayMiiAnimation`    | 44         | `mii`        | 5              | Plays an animation on a selected mii. Must use `selectMii` before running this node              |
+| `SetupMessage`        | 48         | `?, ?`       | 1              | Setup a message. Always runs before a Message node.                                              |
+| `SetupUiButtonPrompt` | 58         | `var`        | 5              | Setup a Ui button prompt and store the user selection in `var`. Next node must be a Message Node |
+| `LoadSEGroup`         | 90         | `name`       | 5              | Loads a sound effect group                                                                       |
+| `PlaySE`              | 96         | `name`       | 5              | Plays a sound effect from the loaded group                                                       |
+
+#### Variables & Storage
+In event flows, the game can create and store values in variables created utilizing nodes. Variables always start with the `$` prefix.
+
+Values can be reassigned, modified and or evaluated to alter the flow of the event. This very common across all event flows present in the game.
+
+A common example is diverting the flow to a specific flowchart depending on a button that was clicked. `SetupUiButtonPrompt` prompts a set of buttons. Once a button is clicked, it  returns the index of the button selected and stores the value in the `var` parameter. This variable can now be evaluated using the `SwitchVariable` node to determine which button was clicked.
