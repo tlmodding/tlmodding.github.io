@@ -1,6 +1,6 @@
 :root {
     --sl-content-width: 50rem;
-    --sl-color-accent: #9e4200;
+    --sl-color-accent: #e16c01;
     --sl-color-accent-high: #ff8a37;
 }
 
@@ -38,6 +38,6 @@ table tbody tr:nth-child(even) {
     background: var(--sl-color-bg-darker);
 }
 
-starlight-obsidian-theme-select {
+.mobile-preferences starlight-obsidian-theme-select {
     height: 100%;
 }
