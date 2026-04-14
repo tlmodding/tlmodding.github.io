@@ -11,11 +11,16 @@ flowchart style format.
 Tomodachi Life utilizes the [MSBF](/documentation/file-formats/lms/msbf) file format to make this work. MSBF is closely linked with [MSBT](/documentation/file-formats/lms/msbf) files
 and their [attributes](/documentation/file-formats/lms/msbt/#atr1) so several properties of scenes can be modified.
 
-### Loading of Scenes 
-In the case of folders like `Drama`, all events must contain the three following files (using example event `ToolBath`):
+:::caution[WIP]
+This is a working-in-progress page. More info will be added in the future.
+:::
+
+### Scene Loading & Properties
+In the case of folders like `Drama`, all events must contain the three following files (example event name):
 
 ```
-romfs/message/Drama/Drama_Tool:
+romfs/message/Drama
+  Drama_Tool:
     >> ToolBath.msbf
     >> ToolBath.msbt 
     >> ToolBath_Build.msbt
@@ -24,37 +29,41 @@ romfs/message/Drama/Drama_Tool:
 
 `ToolBath.msbt` is a [MSBT](/documentation/file-formats/lms/msbt) file that stores normal message text data for referencing.
 
-`ToolBath_Build.msbt` is a [MSBT](/documentation/file-formats/lms/msbt) files store which relevant scene data as [Attributes](/documentation/file-formats/lms/msbt/#atr1). Each label in the file follows the bottom list of attributes, however not all attribute fields are necessary.
+`ToolBath_Build.msbt` is a [MSBT](/documentation/file-formats/lms/msbt) files store which relevant scene data as [Attributes](/documentation/file-formats/lms/msbt/#atr1). 
 
-| Name                      | Datatype | Description                                                                                                                  |
-| ------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `Folder`                  | LIST     | The name of the folder the event is located in.                                                                              |
-| `RequestedScene`          | LIST     | The requested scene folder.                                                                                                  |
-| `bl_Label`                | string   | Label for how the item should be referenced. May be utilized in [MSBF](/documentation/file-formats/lms/msbf) node parameters |
-| `bl_BinaryPass`           | string   | Absolute path to the file reference                                                                                          |
-| `bl_FileLabel`            | string   | Label of item in the loaded file                                                                                             |
-| `bl_DataName`             | string   | -                                                                                                                            |
-| `bl_SceneLabel`           | string   | -                                                                                                                            |
-| `bl_Screen`               | LIST     | To load the scene on the upper or lower 3DS screen.                                                                          |
-| `bl_LightSet`             | string   | -                                                                                                                            |
-| `bl_SRTBone`              | string   | -                                                                                                                            |
-| `bl_Pos`                  | string   | -                                                                                                                            |
-| `bl_Anim`                 | string   | Animation name (if applicable)                                                                                               |
-| `bl_ExpFlag`              | string   | Experience flag (Examples: `1,9`, `1,9,0,8`)                                                                                 |
-| `bl_Body`                 | string   | -                                                                                                                            |
-| `bl_Headwear`             | string   | -                                                                                                                            |
-| `bl_RoomId`               | s8       | -                                                                                                                            |
-| `bl_ItemList`             | string   | -                                                                                                                            |
-| `bl_LightParentCamera`    | string   | -                                                                                                                            |
-| `bl_AnimController`       | u8       | -                                                                                                                            |
-| `bl_MiiResolution`        | LIST     | Sets the resolution of Mii faces in the scene.                                                                               |
-| `bl_MiiNoMaskWhenHolding` | bool     | -                                                                                                                            |
-| `bl_ItemEffect`           | LIST     | Determines if items have effects in the scene.                                                                               |
+Each label in the file follows the bottom list of attributes, however not all attribute fields are necessary.
 
-#### LIST values
+| Name                      | Datatype | Description                                                                                                                                               |
+| ------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Folder`                  | list     | The name of the folder the event is located in.                                                                                                           |
+| `RequestedScene`          | list     | The requested scene folder.                                                                                                                               |
+| `bl_Label`                | string   | Alias for how the item should be referenced. May be utilized in other attribute labels or in [MSBF](/documentation/file-formats/lms/msbf) node parameters |
+| `bl_BinaryPass`           | string   | Absolute path to the file reference                                                                                                                       |
+| `bl_FileLabel`            | string   | A `bl_label` alias. Used in other labels to reference a file set to the alias.                                                                            |
+| `bl_DataName`             | string   | Label of an item in the alias.                                                                                                                            |
+| `bl_SceneLabel`           | string   | The scene to set the data to (?).                                                                                                                         |
+| `bl_Screen`               | list     | `_scene` attributes only. To display the scene on the upper or lower 3DS screen.                                                                          |
+| `bl_LightSet`             | string   | -                                                                                                                                                         |
+| `bl_SRTBone`              | string   | -                                                                                                                                                         |
+| `bl_Pos`                  | string   | -                                                                                                                                                         |
+| `bl_Anim`                 | string   | Animation name (if applicable).                                                                                                                           |
+| `bl_ExpFlag`              | string   | `_mii` attributes only. Mii Expression flag (Examples: `1,9`, `1,9,0,8`).                                                                                 |
+| `bl_Body`                 | string   | `_mii` attributes only. Sets the clothing for a Mii.                                                                                                      |
+| `bl_Headwear`             | string   | `_mii` attributes only. Sets the hat for a Mii.                                                                                                           |
+| `bl_RoomId`               | s8       | -                                                                                                                                                         |
+| `bl_ItemList`             | string   | -                                                                                                                                                         |
+| `bl_LightParentCamera`    | string   | -                                                                                                                                                         |
+| `bl_AnimController`       | u8       | -                                                                                                                                                         |
+| `bl_MiiResolution`        | list     | Sets the resolution of Mii faces in the scene.                                                                                                            |
+| `bl_MiiNoMaskWhenHolding` | bool     | -                                                                                                                                                         |
+| `bl_ItemEffect`           | list     | Determines if items have effects in the scene.                                                                                                            |
 
-`Folder`
+#### List values
 
+<details>
+<summary>
+`Folder` 
+</summary>
 - Confession
 - Drama
 - Dream
@@ -63,9 +72,12 @@ romfs/message/Drama/Drama_Tool:
 - StaffRoll
 - Tool
 - WandererWatch
+</details>
 
-`RequestedScene`
-
+<details>
+<summary>
+`RequestedScene` 
+</summary>
 - Drama
 - Dream
 - Tool
@@ -75,30 +87,40 @@ romfs/message/Drama/Drama_Tool:
 - StaffRoll
 - Ar
 - Etc
+</details>
 
+<details>
+<summary>
 `bl_Screen`
-
+</summary>
 - Upper
 - Lower
 - None
+</details>
 
+<details>
+<summary>
 `bl_MiiResolution`
-
+</summary>
 - `CFL_RESOLUTION_64`
 - `CFL_RESOLUTION_128`
 - `CFL_RESOLUTION_256`
 - `CFL_RESOLUTION_64M`
 - `CFL_RESOLUTION_128M`
 - `CFL_RESOLUTION_256M`
+</details>
 
+<details>
+<summary>
 `bl_ItemEffect`
-
+</summary>
 - EffectOff
 - EffectOn
-  
+</details>
+
 ## Nodes 
 
-Following describes and document node types and their identifers to build a comprehensive view on actions. 
+Following describes and document node types and their identifers to build a comprehensive view on MSBF functions. 
 
 ### Message Nodes
 [Message Nodes](/documentation/file-formats/lms/msbf/message-nodes) reference a message in a [MSBT](/documentation/file-formats/lms/msbt) file. These may be used for when Miis talk, buttons are prompted or a caption is shown on screen.
@@ -136,7 +158,6 @@ Message Nodes always take in two parameters:
 | `PlaySE`              | 96         | `name`       | 5              | Plays a sound effect from the loaded group                                                       |
 
 #### Variables & Storage
-
 In event flows, the game can create and store values in variables created utilizing nodes. Variables always start with the `$` prefix.
 
 Values can be reassigned, modified and or evaluated to alter the flow of the event. This very common across all event flows present in the game.
