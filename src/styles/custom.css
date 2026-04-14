@@ -41,3 +41,7 @@ table tbody tr:nth-child(even) {
 .mobile-preferences starlight-obsidian-theme-select {
     height: 100%;
 }
+
+h1#_top {
+    margin-bottom: -1.5rem;
+}
