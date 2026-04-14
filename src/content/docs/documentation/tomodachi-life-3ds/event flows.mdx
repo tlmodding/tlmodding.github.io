@@ -33,30 +33,30 @@ romfs/message/Drama
 
 Each label in the file follows the bottom list of attributes, however not all attribute fields are necessary.
 
-| Name                      | Datatype | Description                                                                                                                  |
-| ------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `Folder`                  | list     | The name of the folder the event is located in.                                                                              |
-| `RequestedScene`          | list     | The requested scene folder.                                                                                                  |
-| `bl_Label`                | string   | Label for how the item should be referenced. May be utilized in [MSBF](/documentation/file-formats/lms/msbf) node parameters |
-| `bl_BinaryPass`           | string   | Absolute path to the file reference                                                                                          |
-| `bl_FileLabel`            | string   | Label of item in the loaded file                                                                                             |
-| `bl_DataName`             | string   | -                                                                                                                            |
-| `bl_SceneLabel`           | string   | -                                                                                                                            |
-| `bl_Screen`               | list     | `_scene` attributes only. To display the scene on the upper or lower 3DS screen.                                             |
-| `bl_LightSet`             | string   | -                                                                                                                            |
-| `bl_SRTBone`              | string   | -                                                                                                                            |
-| `bl_Pos`                  | string   | -                                                                                                                            |
-| `bl_Anim`                 | string   | Animation name (if applicable).                                                                                              |
-| `bl_ExpFlag`              | string   | `_mii` attributes only. Mii Expression flag (Examples: `1,9`, `1,9,0,8`).                                                    |
-| `bl_Body`                 | string   | `_mii` attributes only. Sets the clothing for a Mii.                                                                         |
-| `bl_Headwear`             | string   | `_mii` attributes only. Sets the hat for a Mii.                                                                              |
-| `bl_RoomId`               | s8       | -                                                                                                                            |
-| `bl_ItemList`             | string   | -                                                                                                                            |
-| `bl_LightParentCamera`    | string   | -                                                                                                                            |
-| `bl_AnimController`       | u8       | -                                                                                                                            |
-| `bl_MiiResolution`        | list     | Sets the resolution of Mii faces in the scene.                                                                               |
-| `bl_MiiNoMaskWhenHolding` | bool     | -                                                                                                                            |
-| `bl_ItemEffect`           | list     | Determines if items have effects in the scene.                                                                               |
+| Name                      | Datatype | Description                                                                                                                                               |
+| ------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Folder`                  | list     | The name of the folder the event is located in.                                                                                                           |
+| `RequestedScene`          | list     | The requested scene folder.                                                                                                                               |
+| `bl_Label`                | string   | Alias for how the item should be referenced. May be utilized in other attribute labels or in [MSBF](/documentation/file-formats/lms/msbf) node parameters |
+| `bl_BinaryPass`           | string   | Absolute path to the file reference                                                                                                                       |
+| `bl_FileLabel`            | string   | A `bl_label` alias. Used in other labels to reference a file set to the alias.                                                                            |
+| `bl_DataName`             | string   | Label of an item in the alias.                                                                                                                            |
+| `bl_SceneLabel`           | string   | The scene to set the data to (?).                                                                                                                         |
+| `bl_Screen`               | list     | `_scene` attributes only. To display the scene on the upper or lower 3DS screen.                                                                          |
+| `bl_LightSet`             | string   | -                                                                                                                                                         |
+| `bl_SRTBone`              | string   | -                                                                                                                                                         |
+| `bl_Pos`                  | string   | -                                                                                                                                                         |
+| `bl_Anim`                 | string   | Animation name (if applicable).                                                                                                                           |
+| `bl_ExpFlag`              | string   | `_mii` attributes only. Mii Expression flag (Examples: `1,9`, `1,9,0,8`).                                                                                 |
+| `bl_Body`                 | string   | `_mii` attributes only. Sets the clothing for a Mii.                                                                                                      |
+| `bl_Headwear`             | string   | `_mii` attributes only. Sets the hat for a Mii.                                                                                                           |
+| `bl_RoomId`               | s8       | -                                                                                                                                                         |
+| `bl_ItemList`             | string   | -                                                                                                                                                         |
+| `bl_LightParentCamera`    | string   | -                                                                                                                                                         |
+| `bl_AnimController`       | u8       | -                                                                                                                                                         |
+| `bl_MiiResolution`        | list     | Sets the resolution of Mii faces in the scene.                                                                                                            |
+| `bl_MiiNoMaskWhenHolding` | bool     | -                                                                                                                                                         |
+| `bl_ItemEffect`           | list     | Determines if items have effects in the scene.                                                                                                            |
 
 #### List values
 
