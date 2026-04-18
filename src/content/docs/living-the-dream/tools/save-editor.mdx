@@ -5,64 +5,94 @@ sidebar:
     order: 1
 ---
 
-import { LinkCard } from '@astrojs/starlight/components';
+import { LinkCard, TabItem, Tabs } from '@astrojs/starlight/components';
 
 The Save Editor is a tool that allows you to edit your save file for **Tomodachi Life: Living the Dream**, giving you the ability to change various aspects of your game, such as give you items, money or even change some more advanced data.
 
 
-### Download
+## Downloads
 
 The Save Editor can be found on [GitHub](https://github.com/tlmodding/living-the-dream-save-editor), it is available for Windows on both WinForms and Avalonia and for Mac and Linux with Avalonia.
 
-:::caution[Dependency]
-For non self-contained versions, you'll need to have [.NET 10 Runtime](https://dotnet.microsoft.com/download/dotnet/10.0) installed on your PC. It is available for Windows, Linux and Mac.
-:::
+<Tabs>
+  <TabItem label="Avalonia">
+    Avalonia is a modern UI framework that can run nativelly on Windows, Linux and Mac. But it does requires **.NET 10 Runtime**.
 
-### WinForms
-WinForms is a UI Framework that targets Windows, but can be used on Mac and Linux with **[Wine](https://www.winehq.org/)**
+    <LinkCard
+      title="Windows x64"
+      target="_blank"
+      href="https://github.com/tlmodding/living-the-dream-save-editor/releases/latest/download/LTDSaveEditor-Windows-x64.zip"
+    />
 
-<LinkCard
-  title="Windows WinForms (self-contained)"
-  description="Self-contained apps don't require .NET 10 to be installed, but have a bigger download size."
-  target="_blank"
-  href="https://github.com/tlmodding/living-the-dream-save-editor/releases/latest/download/LTDSaveEditor-Windows-selfcontained.zip"
-/>
+    <LinkCard
+      title="Linux x64"
+      target="_blank"
+      href="https://github.com/tlmodding/living-the-dream-save-editor/releases/latest/download/LTDSaveEditor-Linux-x64.zip"
+    />
 
-<LinkCard
-  title="Windows WinForms"
-  target="_blank"
-  href="https://github.com/tlmodding/living-the-dream-save-editor/releases/latest/download/LTDSaveEditor-Windows.zip"
-/>
+    <LinkCard
+      title="MacOS x64"
+      target="_blank"
+      href="https://github.com/tlmodding/living-the-dream-save-editor/releases/latest/download/LTDSaveEditor-macOS-x64.zip"
+    />
 
-### Avalonia
-Avalonia is a modern UI framework that can run nativelly on Windows, Linux and Mac. But it does requires **.NET 10 Runtime**.
+    <LinkCard
+      title="MacOS arm64"
+      target="_blank"
+      href="https://github.com/tlmodding/living-the-dream-save-editor/releases/latest/download/LTDSaveEditor-macOS-arm64.zip"
+    />
 
-<LinkCard
-  title="Windows x64"
-  target="_blank"
-  href="https://github.com/tlmodding/living-the-dream-save-editor/releases/latest/download/LTDSaveEditor-Windows-x64.zip"
-/>
+    ### How to open
+    <Tabs>
+      <TabItem label="Windows">
+      On Windows, just extract the files to a folder of your choice and open the `.exe` (either `LTDSaveEditor.Avalonia.exe` or `LTDSaveEditor.WinForms.exe`)
+      </TabItem>
 
-<LinkCard
-  title="Linux x64"
-  target="_blank"
-  href="https://github.com/tlmodding/living-the-dream-save-editor/releases/latest/download/LTDSaveEditor-Linux-x64.zip"
-/>
+      <TabItem label="MacOS">
+      After extracting your files, open your terminal in the extracted folder (right-click inside the folder, select **Services** and choose **New Terminal at Folder**) and use the following commands:
+      ```sh 
+      # Make the Avalonia executable, only required the first time
+      chmod +x LTDSaveEditor.Avalonia 
+      # Run it
+      sudo LTDSaveEditor.Avalonia 
+      ``` 
+      </TabItem>
 
-<LinkCard
-  title="MacOS x64"
-  target="_blank"
-  href="https://github.com/tlmodding/living-the-dream-save-editor/releases/latest/download/LTDSaveEditor-macOS-x64.zip"
-/>
+      <TabItem label="Linux">
+      Open your terminal, navigate to the folder where you extracted the files and use the following commands:
+      ```sh 
+      # Make the Avalonia executable, only required the first time
+      chmod +x ./LTDSaveEditor.Avalonia 
+      # Run it
+      sudo ./LTDSaveEditor.Avalonia 
+      ``` 
+      </TabItem>
+    </Tabs>
+  </TabItem>
+  <TabItem label="WinForms">
+    :::caution[Dependency]
+    For non self-contained versions, you'll need to have [.NET 10 Runtime](https://dotnet.microsoft.com/download/dotnet/10.0) installed on your PC. It is available for Windows, Linux and Mac.
+    :::
 
+    WinForms is a UI Framework that targets Windows, but can be used on Mac and Linux with **[Wine](https://www.winehq.org/)**
 
-<LinkCard
-  title="MacOS arm64"
-  target="_blank"
-  href="https://github.com/tlmodding/living-the-dream-save-editor/releases/latest/download/LTDSaveEditor-macOS-arm64.zip"
-/>
+    <LinkCard
+      title="Windows WinForms (self-contained)"
+      description="Self-contained apps don't require .NET 10 to be installed, but have a bigger download size."
+      target="_blank"
+      href="https://github.com/tlmodding/living-the-dream-save-editor/releases/latest/download/LTDSaveEditor-Windows-selfcontained.zip"
+    />
+
+    <LinkCard
+      title="Windows WinForms"
+      target="_blank"
+      href="https://github.com/tlmodding/living-the-dream-save-editor/releases/latest/download/LTDSaveEditor-Windows.zip"
+    />
+  </TabItem>
+</Tabs>
 
 ## How to use
+
 To start using the Save Editor is pretty simple, all you'll need is your `.sav` files that can be extracted using **JKSV Save Manager** on Switch or by right-clicking the game on a emulator and using "Open User Save Directory".
 
 In the case of an emulator, you can either copy these files to a folder of your preference or select the emulator folder directly, since Save Editor will backup your files automatically.
