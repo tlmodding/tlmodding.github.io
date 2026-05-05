@@ -2,7 +2,6 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightSidebarTopics from 'starlight-sidebar-topics'
-import starlightThemeObsidian from 'starlight-theme-obsidian'
 
 const NETLIFY_PREVIEW_SITE = process.env.CONTEXT !== 'production' && process.env.DEPLOY_PRIME_URL;
 
@@ -29,8 +28,16 @@ export default defineConfig({
 			},
 			components: {
 				Sidebar: './src/overrides/Sidebar.astro',
+				PageFrame: 'starlight-theme-obsidian/overrides/PageFrame.astro',
+				Pagination: 'starlight-theme-obsidian/overrides/Pagination.astro',
+				ThemeSelect: 'starlight-theme-obsidian/overrides/ThemeSelect.astro',
+				SocialIcons: './src/components/SocialIcons.astro',
 			},
 			customCss: [
+				'starlight-theme-obsidian/styles/layers.css',
+				'starlight-theme-obsidian/styles/theme.css',
+				'starlight-theme-obsidian/styles/centered-reading.css',
+				'starlight-theme-obsidian/styles/common.css',
 				'./src/styles/custom.css',
 			],
 			social: [
@@ -59,14 +66,6 @@ export default defineConfig({
 				themes: ['dracula', 'one-light'],
 			},
 			plugins: [
-				starlightThemeObsidian({
-					debug: false,
-					sitemapConfig: {},
-					graphConfig: {},
-					backlinksConfig: {},
-					graph: false,
-					backlinks: true,
-				}),
 				starlightSidebarTopics([
 					{
 						label: 'Wiki',
