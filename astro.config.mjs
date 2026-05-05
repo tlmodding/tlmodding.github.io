@@ -5,13 +5,13 @@ import starlightSidebarTopics from 'starlight-sidebar-topics'
 
 const NETLIFY_PREVIEW_SITE = process.env.CONTEXT !== 'production' && process.env.DEPLOY_PRIME_URL;
 
-const site = NETLIFY_PREVIEW_SITE || 'https://tlmodding.github.io/';
+const site = NETLIFY_PREVIEW_SITE || 'https://tlmodding.com/';
 const ogUrl = new URL('banner.png?v=1', site).href;
 const ogImageAlt = 'Your place for everything about Tomodachi Life modding!';
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://tlmodding.github.io",
+	site: "https://tlmodding.com",
 	integrations: [
 		starlight({
 			title: 'Tomodachi Modding',
