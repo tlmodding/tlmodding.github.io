@@ -9,70 +9,70 @@ import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
 
 Arquivos **MSBT (Message Binary Text)** são usados em todos os jogos Tomodachi Life para armazenar dados de texto, como interface, diálogos, itens e outros textos do jogo.
 
-Neste guia você aprenderá como instalar e configurar o **MSBT Editor** e como utilizá-lo para modificar seus arquivos. Este guia está disponível para múltiplos jogos de Tomodachi Life — selecione o jogo desejado em cada seção!
+Neste guia, você aprenderá como instalar e configurar o **MSBT Editor** e como usá-lo para modificar seus arquivos. Este guia está disponível para vários jogos da franquia Tomodachi Life; selecione o jogo desejado em cada seção!
 
 <Tabs>
   <TabItem label="Tomodachi Life: Living the Dream">
-  Em **Tomodachi Life: Living the Dream**, esses arquivos estão armazenados dentro de um arquivo `.sarc.zs` na pasta `romfs/Mals` e são nomeados como `{language}.{type}.{version}.sarc.zs`, onde:
-  - `{language}` é o [Código de Idioma](#códigos-de-idioma)
-  - `{type}` é `Trial` (se for a versão **Demo**) ou `Product` (jogo completo)
-  - `{version}` é a versão do jogo (3ª linha em `romfs/System/RegionLangMask.txt`)
+  Em **Tomodachi Life: Living the Dream**, esses arquivos ficam dentro de um arquivo `.sarc.zs` na pasta `romfs/Mals` e são nomeados como `{language}.{type}.{version}.sarc.zs`, onde:
+  - `{language}` é o [código do idioma](#códigos-de-idioma)
+  - `{type}` é `Trial` caso seja a versão **Demo**, ou `Product` caso seja o jogo completo
+  - `{version}` é a versão do jogo, encontrada na 3ª linha de `romfs/System/RegionLangMask.txt`
   </TabItem>
-
   <TabItem label="Tomodachi Life (3DS)">
-  Em **Tomodachi Life (3DS)**, esses arquivos estão armazenados dentro de arquivos `.bin` na pasta `romfs/message`, organizados em pastas. Existe apenas um idioma por ROM, então você só encontrará o idioma da ROM que você extraiu.
+  Em **Tomodachi Life (3DS)**, esses arquivos ficam dentro de arquivos `.bin` na pasta `romfs/message`, organizados em pastas. Existe apenas um idioma por ROM, então você só encontrará o idioma da ROM que você extraiu.
   </TabItem>
 </Tabs>
 
 ## Instalando o MSBT Editor
-O **[MSBT Editor](/tools/msbt-editor)** é a principal ferramenta usada para editar arquivos MSBT. Por ser a mais completa e fácil de usar, também oferece suporte a vários jogos.
+
+**[MSBT Editor](/tools/msbt-editor)** é a principal ferramenta usada para editar arquivos MSBT. Ela é a ferramenta mais completa e fácil de usar, além de também oferecer suporte a vários jogos.
 
 <Steps>
-1. [Baixe a versão mais recente do MSBT Editor](https://gitlab.com/AeonSake/msbt-editor/-/releases/permalink/latest) e a configuração do jogo desejado.
+1. [Instale o MSBT Editor](https://msbt-editor.aeonsake.com/#download) e abra-o.
+2. Localize e clique no menu suspenso `Data`, no topo da janela, e depois em `Change Game Config`.
 
-    - Tomodachi Life Living the Dream: [TomoLife_LtD.gcf](https://gitlab.com/AeonSake/msbt-editor/-/raw/master/configs/TomoLife_LtD.gcf)
-    - Tomodachi Life (3DS): [TomoLife.gcf](https://gitlab.com/AeonSake/msbt-editor/-/raw/master/configs/TomoLife.gcf)
-    - Tomodachi Life (3DS) - versão japonesa: [TomoLife_JP.gcf](https://gitlab.com/AeonSake/msbt-editor/-/raw/master/configs/TomoLife_JP.gcf)
+    ![Onde localizar Change Game Config](../../../../assets/images/editing-texts/change-game-config.png)
+3. Clique em `Download Configs` e selecione o(s) jogo(s) desejado(s).
+    - `default:TomoLife_LtD` para **Tomodachi Life: Living the Dream**
+    - `default:TomoLife` para **Tomodachi Life (3DS)**
+    - `default:TomoLife_JP` para **Tomodachi Life (3DS) (Versão Japonesa)**
+    ![Baixando Configs](../../../../assets/images/editing-texts/downloading-configs.png)
 
-    <p>**Para salvar uma configuração, basta abrir o link e pressionar Ctrl + S.**</p>
+4. Depois de baixar o(s) jogo(s) desejado(s), volte para a tela anterior e selecione o jogo que você quer editar.
 
-2. Extraia o arquivo .zip e abra `MsbtEditor.exe`.
-3. Localize e clique no menu suspenso `Data` (no topo) e depois em `Change Game Config`.
-4. Clique em `Import Config...` e selecione seu arquivo `.gcf` (passo 1).
-5. Selecione o jogo desejado na lista.
-6. Seu editor deve estar pronto para uso!
+    ![Selecionando a configuração de jogo atual](../../../../assets/images/editing-texts/select-game-config.png)
+5. Seu editor deve estar pronto para uso!
 </Steps>
 
 ## Editando
 
 <Tabs>
   <TabItem label="Tomodachi Life: Living the Dream">
-Para editar mensagens é **muito** simples — tudo o que você precisa fazer é localizar seu [idioma](#language-codes) na pasta `romfs/Mals` e abrir no editor. Veja o passo a passo:
+    Editar mensagens é **muito** simples. Tudo o que você precisa fazer é localizar seu [idioma](#códigos-de-idioma) na pasta `romfs/Mals` e abri-lo no editor. Aqui está o passo a passo:
 
-<Steps>
-1. Abra o MSBT Editor
-2. Vá em `File` > `Open File...` e selecione o idioma desejado na pasta `romfs/Mals`
-   
-   *Você também pode abrir a pasta Mals diretamente, se pretende editar vários idiomas ao mesmo tempo.*
-
-3. Expanda o arquivo carregado e encontre qual arquivo **.MSBT** deseja editar
-4. Faça suas alterações e salve com **Ctrl + S**
-5. Após finalizar todas as edições, clique com o botão direito no arquivo *.sarc* (arquivo raiz) e clique em `Save`
-6. Você editou seus textos com sucesso!
-</Steps>
+    <Steps>
+    1. Abra o MSBT Editor.
+    2. Vá em `File` > `Open File...` e selecione o idioma desejado na sua pasta `romfs/Mals`.
+        
+        *Você também pode abrir a pasta Mals diretamente, caso planeje editar vários idiomas ao mesmo tempo.*
+    3. Expanda o arquivo carregado e encontre qual arquivo **.MSBT** você quer editar.
+    4. Faça suas edições e salve o arquivo com **Ctrl + S**.
+    5. Depois de terminar todas as suas edições, clique com o botão direito no arquivo *.sarc* (o arquivo raiz) e clique em `Save`.
+    6. Você editou seus textos com sucesso!
+    </Steps>
   </TabItem>
-
   <TabItem label="Tomodachi Life (3DS)">
-Para editar mensagens é **muito** simples — basta abrir sua pasta `romfs/message` no editor. Veja o passo a passo:
+    Editar mensagens é **muito** simples. Tudo o que você precisa fazer é abrir sua pasta `romfs/message` no editor. Aqui está o passo a passo:
 
-<Steps>
-1. Abra o MSBT Editor
-2. Vá em `File` > `Open Folder...` e selecione a pasta `romfs/message`
-3. Procure os arquivos que deseja editar nos diretórios carregados
-4. Faça suas alterações e salve com **Ctrl + S**
-5. Após finalizar todas as edições, clique com o botão direito na pasta `message` e clique em `Save`
-6. Você editou seus textos com sucesso!
-</Steps>
+    <Steps>
+    1. Abra o MSBT Editor.
+    
+    2. Vá em `File` > `Open Folder...` e selecione sua pasta `romfs/message`.
+    3. Procure os arquivos que você quer editar nos diretórios e arquivos carregados.
+    4. Faça suas edições e salve o arquivo com **Ctrl + S**.
+    5. Depois de terminar todas as suas edições, clique com o botão direito na pasta `message` e clique em `Save`.
+    6. Você editou seus textos com sucesso!
+    </Steps>
   </TabItem>
 </Tabs>
 
