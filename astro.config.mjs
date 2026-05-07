@@ -108,6 +108,10 @@ export default defineConfig({
 						{
 							label: 'Tools',
 							autogenerate: { directory: 'living-the-dream/tools' },
+						}, 
+						{
+							label: 'Reverse Engineering',
+							autogenerate: { directory: 'living-the-dream/reverse-engineering' }
 						}]
 					},
 					{
