@@ -1,6 +1,6 @@
 :root {
     --sl-content-margin-inline: unset;
-    --sl-content-width: 50rem;
+    --sl-content-width: 100%;
     --sl-color-accent: #e16c01;
     --sl-color-accent-high: #ff8a37;
     --sl-color-bg-nav: var(--sl-color-bg);
@@ -43,6 +43,10 @@ body {
 
 h1#_top {
     margin-top: 0;
+}
+
+.right-sidebar-container {
+    width: var(--sl-sidebar-width);
 }
 
 /* ------------ Expressive Code styling -------------- */
