@@ -66,19 +66,31 @@ export default defineConfig({
 						items: [
 							{
 								label: 'Getting Started',
-								autogenerate: { directory: "getting-started" }
+								translations: {
+									'pt-BR': 'Começando'
+								},
+								items: [{ autogenerate: { directory: 'getting-started' } }]
 							},
 							{
 								label: 'Creating Mods',
-								autogenerate: { directory: "creating-mods" }
+								translations: {
+									'pt-BR': 'Criando Mods'
+								},
+								items: [{ autogenerate: { directory: "creating-mods" } }]
 							},
 							{
 								label: 'Tools',
-								autogenerate: { directory: 'tools' }
+								translations: {
+									'pt-BR': 'Ferramentas'
+								},
+								items: [{ autogenerate: { directory: 'tools' } }]
 							},
 							{
 								label: 'Guides',
-								autogenerate: { directory: "guides" }
+								translations: {
+									'pt-BR': 'Guias'
+								},
+								items: [{ autogenerate: { directory: "guides" } }]
 							},
 						]
 					},
@@ -88,30 +100,51 @@ export default defineConfig({
 						icon: 'star',
 						items: [{
 							label: 'Getting Started',
+							translations: {
+								'pt-BR': 'Começando'
+							},
 							items:[{
 								label: 'Overview',
+								translations: {
+									'pt-BR': 'Visão Geral'
+								},
 								link: '/living-the-dream',
 							},
 							{
-								label: 'Spreadsheets',
-								link: '/living-the-dream/spreadsheets',
+								label: 'Spreadsheet',
+								translations: {
+									'pt-BR': 'Planilha'
+								},
+								link: 'https://docs.google.com/spreadsheets/d/1TyLMb9qR52tpPSeCWo3kovkHwIGDUlJQYmKz77NHAIE/view'
 							}]
 						},
 						{
 							label: 'Tools',
-							autogenerate: { directory: 'living-the-dream/tools' },
+							translations: {
+								'pt-BR': 'Ferramentas'
+							},
+							items: [{ autogenerate: { directory: 'living-the-dream/tools' } }]
 						}, 
 						{
 							label: 'Reverse Engineering',
-							autogenerate: { directory: 'living-the-dream/reverse-engineering' }
+							translations: {
+								'pt-BR': 'Engenharia Reversa'
+							},
+							items: [{ autogenerate: { directory: 'living-the-dream/reverse-engineering' } }]
 						}]
 					},
 					{
-						label: 'Documentation',
+						label: {
+							en: 'Documentation',
+							'pt-BR': 'Documentação'
+						},
 						link: '/documentation',
 						icon: 'laptop',
 						items: [{
 							label: 'Documentation',
+							translations: {
+								'pt-BR': 'Documentação'
+							},
 							items:[{
 								label: 'Getting Started',
 								link: '/documentation',
@@ -119,15 +152,18 @@ export default defineConfig({
 						},
 						{
 								label: 'Living the Dream',
-								autogenerate: { directory: 'documentation/living-the-dream' },
+								items: [{ autogenerate: { directory: 'documentation/living-the-dream' } }]
 						},
 						{
 								label: 'Tomodachi Life (3DS)',
-								autogenerate: { directory: 'documentation/tomodachi-life-3ds' },
+								items: [{ autogenerate: { directory: 'documentation/tomodachi-life-3ds' } }]
 						},
 					 	{
 								label: 'File Formats',
-								autogenerate: { directory: 'documentation/file-formats' },
+								translations: {
+									'pt-BR': 'Formatos de Arquivo'
+								},
+								items: [{ autogenerate: { directory: 'documentation/file-formats' } }]
 						}]
 					},
 
