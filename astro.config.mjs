@@ -14,7 +14,7 @@ export default defineConfig({
 	site: "https://tlmodding.com",
 	integrations: [
 		starlight({
-			title: 'Tomodachi Modding',
+			title: 'Tomodachi Life Modding',
 			defaultLocale: 'root',
 			locales: {
 				root: {
@@ -27,17 +27,9 @@ export default defineConfig({
 				}
 			},
 			components: {
-				Sidebar: './src/overrides/Sidebar.astro',
-				PageFrame: 'starlight-theme-obsidian/overrides/PageFrame.astro',
-				Pagination: 'starlight-theme-obsidian/overrides/Pagination.astro',
-				ThemeSelect: 'starlight-theme-obsidian/overrides/ThemeSelect.astro',
 				SocialIcons: './src/components/SocialIcons.astro',
 			},
 			customCss: [
-				'starlight-theme-obsidian/styles/layers.css',
-				'starlight-theme-obsidian/styles/theme.css',
-				'starlight-theme-obsidian/styles/centered-reading.css',
-				'starlight-theme-obsidian/styles/common.css',
 				'./src/styles/custom.css',
 			],
 			social: [
