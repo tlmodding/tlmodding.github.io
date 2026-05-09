@@ -1,171 +1,74 @@
 ---
 title: Save Editor
-description: "How to install and use the Save Editor for Tomodachi Life: Living the Dream."
+description: "How to use the Save Editor for Tomodachi Life: Living the Dream."
 sidebar:
     order: 1
 ---
 
 import { LinkCard, TabItem, Tabs } from '@astrojs/starlight/components';
 
+The **Save Editor** is a tool that allows you to edit your save file for **Tomodachi Life: Living the Dream**, giving you the ability to change various aspects of your game, such as giving you items, money or even changing some more advanced data.
 
-:::tip[New editor available!]
-A [web-based save editor](https://ltd-save-editor.pages.dev/) is now available! It makes editing your save file easier and more accessible!
+<LinkCard
+  title="Access the Save Editor"
+  href="https://ltdsave.app/"
+  target="_blank"
+  description="Opens the Save Editor on a new tab"/>
 
-Try it now on https://ltd-save-editor.pages.dev/
+## How to use the Save Editor
+
+On *Living the Dream*, you can access the Save Editor directly from your browser by either visiting [ltdsave.app](https://ltdsave.app/) or clicking on the button above. 
+
+:::caution
+Before continuing, please make sure to **backup your save file** before using the Save Editor, as there is always a risk of corrupting your save file when editing it.
 :::
 
-The Save Editor is a tool that allows you to edit your save file for **Tomodachi Life: Living the Dream**, giving you the ability to change various aspects of your game, such as give you items, money or even change some more advanced data.
+Once you open the Save Editor, you will be asked to upload your save file, you can either **upload one of the three save files** from your game or **upload the entire save folder**. After uploading your save file, you will see a simple interface with various tabs that allow you to edit different aspects of your save file.
 
-Currently, you can use either the downloable Save Editor, *which will be covered on this page*, or the [web-based Save Editor](https://ltd-save-editor.pages.dev/), which have a more friendly user interface and can be used on any platform without the need of downloading anything.
+![Upload Your Save](../../../../assets/images/save-editor/upload-your-save.png)
 
-## Downloads
+## Player Tab
 
-The Save Editor can be found on [GitHub](https://github.com/tlmodding/living-the-dream-save-editor), it is available for Windows on both WinForms and Avalonia and for Mac and Linux with Avalonia.
+In the **Player** tab, there are various sub-tabs that allow you to edit different aspects of your player data.
 
-<Tabs>
-  <TabItem label="Avalonia">
-    Avalonia is a modern UI framework that can run nativelly on Windows, Linux and Mac. But it does requires **.NET 10 Runtime**.
+### Profile
 
-    <LinkCard
-      title="Windows x64"
-      target="_blank"
-      href="https://github.com/tlmodding/living-the-dream-save-editor/releases/latest/download/LTDSaveEditor-Windows-x64.zip"
-    />
+You can edit various aspects of your profile, such as your name, island name, skin tone, island size, money and more.
 
-    <LinkCard
-      title="Linux x64"
-      target="_blank"
-      href="https://github.com/tlmodding/living-the-dream-save-editor/releases/latest/download/LTDSaveEditor-Linux-x64.zip"
-    />
+### Items
 
-    <LinkCard
-      title="MacOS x64"
-      target="_blank"
-      href="https://github.com/tlmodding/living-the-dream-save-editor/releases/latest/download/LTDSaveEditor-macOS-x64.zip"
-    />
+There are 6 sub-tabs in the **Player** tab that allow you to edit the items in your inventory, these are:
+- **Foods**: You can edit the foods in your inventory.
+- **Clothes**: You can edit the clothes in your inventory.
+- **Clothing Sets**: You can edit the clothing sets in your inventory. 
+- **Treasures**: You can edit the treasures in your inventory.
+- **Interiors**: You can edit the interiors in your inventory.
+- **Buildings**: You can edit the buildings in your inventory.
 
-    <LinkCard
-      title="MacOS arm64"
-      target="_blank"
-      href="https://github.com/tlmodding/living-the-dream-save-editor/releases/latest/download/LTDSaveEditor-macOS-arm64.zip"
-    />
+To unlock an item, simply change the state from `Locked` to `Obtained` and to edit the quantity, simply change the number next to the `Obtained` state.
 
-    ### How to open
-    <Tabs>
-      <TabItem label="Windows">
-      On Windows, just extract the files to a folder of your choice and open the `.exe` (either `LTDSaveEditor.Avalonia.exe` or `LTDSaveEditor.WinForms.exe`)
-      </TabItem>
+*For example, if you want to have 99 Apples, simply change state from `Locked` to `Obtained` and change the quantity to `99`, as shown in the image below.*
 
-      <TabItem label="MacOS">
-      After extracting your files, open your terminal in the extracted folder (right-click inside the folder, select **Services** and choose **New Terminal at Folder**) and use the following commands:
-      ```sh 
-      # Make the Avalonia executable, only required the first time
-      chmod +x LTDSaveEditor.Avalonia 
-      # Run it (you need to use this command every time you want to open it)
-      ./LTDSaveEditor.Avalonia 
-      ``` 
-      </TabItem>
+![Apples with 99 Obtained](../../../../assets/images/save-editor/apples-example.png)
 
-      <TabItem label="Linux">
-      Open your terminal, navigate to the folder where you extracted the files and use the following commands:
-      ```sh 
-      # Make the Avalonia executable, only required the first time
-      chmod +x ./LTDSaveEditor.Avalonia 
-      # Run it (you need to use this command every time you want to open it)
-      ./LTDSaveEditor.Avalonia 
-      ``` 
-      </TabItem>
-    </Tabs>
-  </TabItem>
-  <TabItem label="WinForms">
-    :::caution[Dependency]
-    For non self-contained versions, you'll need to have [.NET 10 Runtime](https://dotnet.microsoft.com/download/dotnet/10.0) installed on your PC. It is available for Windows, Linux and Mac.
-    :::
+##### Bulk Editing
 
-    WinForms is a UI Framework that targets Windows, but can be used on Mac and Linux with **[Wine](https://www.winehq.org/)**
+You can also expand the bulk editing options by clicking on the `Bulk Edit`, this will allow you to edit the state and quantities of all items at once, as shown in the image below.
 
-    <LinkCard
-      title="Windows WinForms (self-contained)"
-      description="Self-contained apps don't require .NET 10 to be installed, but have a bigger download size."
-      target="_blank"
-      href="https://github.com/tlmodding/living-the-dream-save-editor/releases/latest/download/LTDSaveEditor-Windows-selfcontained.zip"
-    />
+Simply set the state to `Obtained` and the quantity that you want for all items and click on both **Apply** buttons.
 
-    <LinkCard
-      title="Windows WinForms"
-      target="_blank"
-      href="https://github.com/tlmodding/living-the-dream-save-editor/releases/latest/download/LTDSaveEditor-Windows.zip"
-    />
-  </TabItem>
-</Tabs>
+![Bulk Editing Foods](../../../../assets/images/save-editor/foods-bulk-editing.png)
 
-## How to use
+### UGC
 
-To start using the Save Editor is pretty simple, all you'll need is your `.sav` files that can be extracted using **JKSV Save Manager** on Switch or by right-clicking the game on a emulator and using "Open User Save Directory".
+In the **UGC** sub-tab, you can edit existining Lingos or create new ones by clicking on `+ Add Slot`.
 
-In the case of an emulator, you can either copy these files to a folder of your preference or select the emulator folder directly, since Save Editor will backup your files automatically.
+### Advanced
 
-This is what you'll see when you open the program:
-![Select a folder](../../../../assets/images/save-editor/select-a-folder.png)
+The **Advanced** sub-tab allows you to edit any entry in your save file, this is recommended for advanced users only, as changing some values can cause issues with your save file.
 
-Simply drag and drop the folder directly into the editor or click the "Choose Folder" to select where your save files are.
+:::danger
+Editing values in the Advanced tab can permanently corrupt your save, brick your progress, or cause the game to crash or refuse to load.
 
-And if you selected the folder correctly, you should be able to see the next window.
-**NOTE:** The folder you select **must** contain all the required `.sav` files: `Player.sav`,`Mii.sav` and `Map.sav`
-
-![save-editor/select-a-entry](../../../../assets/images/save-editor/select-a-entry.png)
-
-Now all you need is to select which entry/flag you want to edit. Let's see some examples.
-
-## Examples
-This is where things starts to get interesting, but can be a little hard to find all the options you want, so let's address some of the most important ones.
-
-The examples in here will use dots to indicate a path, so to found the property just go on the tab (Player, Mii or Map) and start to un-collapse the dropdowns as the name suggests.
-
-### Player
-The `Player` tab stores all sort of information about the player itself, some of the most common flags are these:
-
-- `Player.Money` - Stores the information of how much money your player have.
-
-- `Trial.IsFinishedPR` (*demo only*) - Indicates if the player completed the demo.
-
-### Unlocking Foods
-
-In the **Player** tab, the `Player.FoodIndo.State` is where the foods states are stored, you can use the bulk edit option at the top right to change all entries at once or change values individually.
-
-Changing the entries to `Obtained` will make them appear on your store so you can buy.
-
-Alternatively, in `Player.FoodInfo.OwnNum` you can set the quantity you own for a specific food item (or bulk edit).
-
-:::note
-If the entries don't update after using Bulk Edit, just select another entry and go back to the one you edited, and it should update properly, it's a visual glitch.
+**Always make a backup of your save file** before making any changes in the Advanced tab, and only change values that you are sure about.
 :::
-
-### Unlocking Clothes
-
-In the **Player** tab, the `Player.ClothInfo.OwnInfoArray.State` is where the clothes states are stored, you can use the bulk edit option at the top right to change all entries at once or change values individually.
-
-Changing the entries to `Obtained` will make them appear on your store so you can buy.
-
-Alternatively, in `Player.ClothInfo.OwnInfoArray.OwnNum` you can set the quantity you own for a specific cloth (or bulk edit).
-
-:::note
-If the entries don't update after using Bulk Edit, just select another entry and go back to the one you edited, and it should update properly, it's a visual glitch.
-:::
-
-### Miis
-The `Mii` tab stores all sort of information of your Miis, these can be useful for you:
-
-First is important to know the **index** of the Mii you want to edit, to do this go on:
-
-`Mii.Name.Name` - The first column is the index and second column is the name of your Mii, remember the index for the Mii you want to edit.
-
-Now that you have the Mii index you can edit a lot of things like:
-
-- `Mii.CharacterParam` - This group stores the *Sociability*, *Audaciousness*, *Activeness*, *Commonsense* and *Gaiety* of each Mii.
-- `Mii.Feeling.Type` - Stores how the Mii is currently feeling.
-- `Mii.MiiMisc.EatInfo.EatFullness` - Indicates how full the Mii stomatch is, from 0 to 100.
-- `Mii.MiiMisc.EatInfo.UltraBestId` - The all-time favorite food of the Mii.
-- `Mii.MiiMisc.EatInfo.BestId` - The 2nd all-time favorite food of the Mii.
-- `Mii.MiiMisc.EatInfo.UltraWorstId` - The all-time hated food of the Mii.
-- `Mii.MiiMisc.EatInfo.WorstId` - The 2nd all-time hated food of the Mii.
