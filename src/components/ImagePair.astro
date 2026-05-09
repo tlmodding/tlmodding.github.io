@@ -1,0 +1,44 @@
+---
+const { left, right, title, optional = [] } = Astro.props;
+
+const optionalImages = Array.isArray(optional) ? optional : [optional];
+---
+
+
+<div class="image-pair-container">
+    <h4>{title}</h4>
+    <div class="image-pair">
+        <img src={left}/>
+        <img src={right}/>
+        {optionalImages.map(src => (
+            <img src={src} />
+        ))}
+    </div>
+</div>
+    
+<style>
+    .image-pair {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        border-radius: var(--sl-border-radius-md);
+        border: unset;
+        padding: 1rem;
+        margin: 1rem 0;
+        background-color: var(--sl-color-black);
+        box-shadow: 0 0 0 1px var(--sl-color-hairline);
+
+    }
+
+    .image-pair img {
+        display: block;
+        height: 12.5rem;
+        width: auto;
+        object-fit: contain;
+        margin-top: 0;
+        border-radius: var(--sl-border-radius-sm);
+    }
+</style>

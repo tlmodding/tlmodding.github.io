@@ -112,6 +112,13 @@ export default defineConfig({
                             link: '/living-the-dream',
                         },
                         {
+                            label: 'User Generated Content',
+                            translations: {
+                                'pt-BR': 'Conteúdo Gerado por Usuário'
+                            },
+                            link: '/living-the-dream/ugc',
+                        },
+                        {
                             label: 'Spreadsheet',
                             translations: {
                                 'pt-BR': 'Planilha'
