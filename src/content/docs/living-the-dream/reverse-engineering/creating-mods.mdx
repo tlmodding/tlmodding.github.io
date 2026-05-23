@@ -1,0 +1,70 @@
+---
+title: Creating mods
+description: "Learn how to create mods using Skyline."
+sidebar:
+    order: 3
+---
+
+Skyline is an environment for linking, runtime hooking and code patching that was designed for Super Smash Bros Ultimate, however it can be used with other Nintendo games.
+
+## Installing Skyline
+
+import { Steps } from "@astrojs/starlight/components";
+
+<Steps>
+1. Go to the [latest GitHub release](https://github.com/crackheadakira/skyline/releases/tag/release).
+2. Download either `skyline_logging.zip` or `skyline_no_logging.zip`, depending on if you wish to have logging.
+3. Extract the downloaded file, and copy the `exefs` directory to this directory on your Switch SD card: `atmosphere/contents/010051f0207b2000/`
+</Steps>
+
+:::tip
+If you are testing your mods on an emulator instead of hardware, the path structure inside `atmosphere/` remains identical, but starts from the emulator's virtual SD card root:
+
+- Ryujinx: `Ryujinx/sdcard/atmosphere/contents/010051f0207b2000/`.
+- Eden: `eden/sdmc/atmosphere/contents/010051f0207b2000/`.
+:::
+
+## Compiling Skyline yourself
+
+<Steps>
+1. Clone the GitHub repository with `git clone https://github.com/crackheadakira/skyline.git`.
+2. Enter the `skyline` folder, and enter the feature branch via `git checkout feature/tomodachi-telemetry`
+3. Compile it by running `make all`, or if you wish to have no logging, append the `NOLOG` flag:
+
+   ```bash
+    make all NOLOG=1
+    ```
+4. Rename `living_the_dream.npdm` to `main.npdm`, and `skyline.nso` to `subsdk9`.
+5. Move the files to the `exefs` directory (if it does not exist, create it yourself) to this directory on your Switch SD card: `atmosphere/contents/010051f0207b2000/`
+</Steps>
+
+## Logging with Skyline
+
+To be able to log with Skyline you simply run the following command in your terminal when the game is running:
+
+```bash
+nc <SWITCH_IP_ADDRESS> 6969
+```
+
+:::note
+Replace `<SWITCH_IP_ADDRESS>` with your Nintendo Switch's actual local IP address (found in your console's Internet Settings). If you are using an emulator on the same computer, you can use localhost.
+:::
+
+:::tip[GUI Alternatives]
+If you are on Windows and prefer not to use the command line, you can use PuTTY to view the logs in a window:
+
+1. Open PuTTY.
+2. Enter your Switch's IP address and set the Port to `6969`.
+3. Select Raw as the Connection Type and click **Open**.
+
+Alternatively, modern network testing tools like [Packet Sender](https://packetsender.com/) or [Hercules Setup Utility](https://www.hw-group.com/software/hercules-setup-utility) work perfectly for viewing TCP streams.
+:::
+
+## Writing mods with Rust
+
+<Steps>
+1. Install `cargo-skyline` with `cargo install cargo-skyline`.
+2. Create a new project with `cargo skyline new <project_name>`.
+3. To build a project simply run `cargo skyline build`.
+4. Once built, your compiled plugin will be located in the `target/aarch64-skyline-switch` directory. This is to be copied over to `atmosphere/contents/010051f0207b2000/romfs/skyline/plugins/`
+</Steps>
