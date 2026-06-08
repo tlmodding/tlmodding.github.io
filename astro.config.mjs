@@ -16,7 +16,9 @@ export default defineConfig({
     site: "https://tlmodding.com",
     integrations: [starlight({
         title: 'Tomodachi Life Modding',
+        description: 'Your place for everything about Tomodachi Life modding!',
         defaultLocale: 'root',
+        lastUpdated: true,
         locales: {
             root: {
                 label: 'English',
@@ -62,7 +64,7 @@ export default defineConfig({
             starlightSidebarTopics([
                 {
                     label: 'Wiki',
-                    link: '/getting-started/overview',
+                    link: '/getting-started',
                     icon: 'open-book',
                     items: [
                         {
@@ -123,9 +125,20 @@ export default defineConfig({
                             translations: {
                                 'pt-BR': 'Planilha'
                             },
-                            link: 'https://docs.google.com/spreadsheets/d/1TyLMb9qR52tpPSeCWo3kovkHwIGDUlJQYmKz77NHAIE/view'
+                            link: 'https://docs.google.com/spreadsheets/d/1TyLMb9qR52tpPSeCWo3kovkHwIGDUlJQYmKz77NHAIE/view',
+                            attrs: { target: '_blank' }
                         }]
                     },
+                    {
+                        label: 'Creating Mods',
+                        translations: {
+                            'pt-BR': 'Criando Mods'
+                        },
+                        items: [{ autogenerate: { directory: 'living-the-dream/creating-mods' } }, {
+                            label: 'Editing Texts',
+                            link: '/creating-mods/editing-texts',
+                        }]
+                    }, 
                     {
                         label: 'Tools',
                         translations: {

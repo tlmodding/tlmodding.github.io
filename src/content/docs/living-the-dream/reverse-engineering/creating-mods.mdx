@@ -1,15 +1,23 @@
 ---
-title: Creating mods
+title: Creating Skyline Plugins
 description: "Learn how to create mods using Skyline."
 sidebar:
     order: 3
 ---
 
-Skyline is an environment for linking, runtime hooking and code patching that was designed for Super Smash Bros Ultimate, however it can be used with other Nintendo games.
+import { Steps } from "@astrojs/starlight/components";
+
+[Skyline](https://github.com/skyline-dev/skyline) is an environment for linking, runtime hooking and code patching originally designed for **Super Smash Bros Ultimate** but can be used with other Nintendo Switch games.
+
+This is a great tool for modders who want to create mods that require code changes, as it allows you to write your mods in **Rust** or **C++**.
+
+:::note
+This guide is for advanced users who are already familiar with reverse engineering and coding in general, if you don't know what reverse engineering is or don't know how to code we recommend starting with a more introductory guide.
+:::
 
 ## Installing Skyline
 
-import { Steps } from "@astrojs/starlight/components";
+For Tomodachi Life: Living the Dream, you'll need to use a custom version of Skyline, which can be downloaded from the releases page of the GitHub repository.
 
 <Steps>
 1. Go to the [latest GitHub release](https://github.com/crackheadakira/skyline/releases/tag/release).
@@ -24,7 +32,9 @@ If you are testing your mods on an emulator instead of hardware, the path struct
 - Eden: `eden/sdmc/atmosphere/contents/010051f0207b2000/`.
 :::
 
-## Compiling Skyline yourself
+### Compiling Skyline yourself
+
+Alternatively, you can compile Skyline yourself by following these instructions. This is recommended if you want to use the latest features or if you want to contribute to the project.
 
 <Steps>
 1. Clone the GitHub repository with `git clone https://github.com/crackheadakira/skyline.git`.

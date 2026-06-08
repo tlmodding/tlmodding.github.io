@@ -1,0 +1,40 @@
+---
+title: Resource Size Patching
+description: "Some mods may need to patch the resource size table to work, let's patch it!"
+sidebar:
+  order: 2
+---
+
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+**R**esource **S**ize **T**a**b**le or RSTB for short is a "table" that contain the size of the resources (files) used in the game, it's used by the game to know how much memory to allocate for each resource. Some mods may need to patch this table to properly work and avoid crashes or models not loading properly.
+
+You can find this file on your dumped romfs at `romfs:/System/Resource/ResourceSizeTable.Product.100.Nin_NX_NVN.rsizetable.zs`.
+
+### Patching the RSTB
+
+To patch the RSTB you can use either the [RSTB patcher](https://github.com/tlmodding/ltd-rstb-patcher/releases/latest) or [TomoCLI](https://github.com/alexislours/tomo/releases/latest), both tools are user-friendly and will do the job, here is a step by step guide for both tools:
+
+<Tabs>
+  <TabItem label="RSTB Patcher">
+    <Steps>
+      1. Download the latest version of the [RSTB patcher](https://github.com/tlmodding/ltd-rstb-patcher/releases/latest).
+      2. Open a terminal and navigate to the folder where you downloaded the patcher. (On Windows you can Shift + Right Click and select "Open PowerShell window here" or "Open Command Prompt window here")
+      3. Run the following command to patch your RSTB, make sure to replace the paths with the correct ones:
+          
+          ```bash
+            RSTBPatcher.CLI patch -i "C:/path/to/vanilla_rstb" -t "C:/path/to/your/modded_romfs"
+          ```
+          Where `vanilla_rstb` is the path to your vanilla RSTB file (`ResourceSizeTable.Product.100.Nin_NX_NVN.rsizetable.zs`) and `modded_romfs` is the path to your modded romfs folder (where all your mods are installed).
+      4. After running the command, your RSTB should be patched and ready to use on the same folder as the RSTBPatcher executable, you can optionally use `-o` to specify an output path for the patched RSTB.
+    </Steps>
+
+  </TabItem>
+  <TabItem label="TomoCLI">
+  
+  </TabItem>
+</Tabs>
+
+:::caution[Having issues?]
+If you're having issues with the patched RSTB try patching it with the other tool as they can produce different results.
+:::
